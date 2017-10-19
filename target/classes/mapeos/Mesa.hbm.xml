@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Mesa" table="mesa">
+		<id column="idMesa" name="idMesa">
+			<generator class="identity" />
+		</id>
+		<property column="mesa" name="mesa" type="string" />
+		<property column="activa" name="activa" type="boolean" />
+		<property column="cantidadComensales" name="cantidadComensales"
+			type="int" />
+
+		<set name="pedidos" table="pedido" order-by="idPedido asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idMesa" not-null="true" />
+			<one-to-many class="datos.Pedido" />
+		</set>
+	</class>
+</hibernate-mapping>

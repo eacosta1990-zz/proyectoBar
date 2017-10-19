@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/mydb" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="hibernate4SessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+
+	</bean>
+
+	<bean id="MesaDAO" class="dao.MesaDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="MesaABM" class="negocio.MesaABM">
+		<property name="dao" ref="MesaDAO" />
+	</bean>
+
+	<bean id="MozoDAO" class="dao.MozoDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="MozoABM" class="negocio.MozoABM">
+		<property name="dao" ref="MozoDAO" />
+	</bean>
+
+	<bean id="TipoProductoDAO" class="dao.TipoProductoDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="TipoProductoABM" class="negocio.TipoProductoABM">
+		<property name="dao" ref="TipoProductoDAO" />
+	</bean>
+	
+	<bean id="ProductoDAO" class="dao.ProductoDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="ProductoABM" class="negocio.ProductoABM">
+		<property name="dao" ref="ProductoDAO" />
+	</bean>
+	
+	<bean id="ProductoCantidadDAO" class="dao.ProductoCantidadDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="ProductoCantidadABM" class="negocio.ProductoCantidadABM">
+		<property name="dao" ref="ProductoCantidadDAO" />
+	</bean>
+
+<bean id="PedidoDAO" class="dao.PedidoDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="PedidoABM" class="negocio.PedidoABM">
+		<property name="dao" ref="PedidoDAO" />
+	</bean>
+	
+
+<bean id="VentaDAO" class="dao.VentaDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="VentaABM" class="negocio.VentaABM">
+		<property name="dao" ref="VentaDAO" />
+	</bean>
+
+
+<bean id="TipoVentaDAO" class="dao.TipoVentaDAO">
+		<property name="sessionFactory" ref="hibernate4SessionFactory" />
+	</bean>
+
+	<bean id="TipoVentaABM" class="negocio.TipoVentaABM">
+		<property name="dao" ref="TipoVentaDAO" />
+	</bean>
+</beans>
+

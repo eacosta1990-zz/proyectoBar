@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Producto" table="producto">
+		<id column="idProducto" name="idProducto">
+			<generator class="identity" />
+		</id>
+		<property column="producto" name="producto" type="string" />
+		<property column="precio" name="precio" type="float" />
+
+		<many-to-one name="tipoProducto" class="datos.TipoProducto"
+			column="idTipoProducto" not-null="true" />
+
+		<set name="productosCantidad" table="productoCantidad" order-by="idProductoCantidad asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idProducto" not-null="true" />
+			<one-to-many class="datos.ProductoCantidad" />
+		</set>
+
+
+	</class>
+</hibernate-mapping>

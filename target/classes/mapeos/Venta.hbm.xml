@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Venta" table="venta">
+		<id column="idVenta" name="idVenta">
+			<generator class="identity" />
+		</id>
+		<property column="total" name="total" type="float" />
+		<property column="horaVenta" name="horaVenta" type="calendar" />
+		<!-- Falta mapeos cardinalidad -->
+		
+		<many-to-one name="tipoVenta" class="datos.TipoVenta"
+			column="idTipoVenta" not-null="true" />
+		<one-to-one name="pedido" class="datos.Pedido" />
+
+	</class>
+</hibernate-mapping>

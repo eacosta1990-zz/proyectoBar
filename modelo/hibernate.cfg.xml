@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD
+3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property> <!-- en true muestra hql en consola -->
+
+		<mapping resource="mapeos/Mesa.hbm.xml" />
+		<mapping resource="mapeos/Mozo.hbm.xml" />
+		<mapping resource="mapeos/Producto.hbm.xml" />
+		<mapping resource="mapeos/TipoProducto.hbm.xml" />
+		<mapping resource="mapeos/TipoVenta.hbm.xml" />
+		<mapping resource="mapeos/ProductoCantidad.hbm.xml" />
+		<mapping resource="mapeos/Venta.hbm.xml" />
+		<mapping resource="mapeos/Pedido.hbm.xml" />
+		<!--Mapeo Entidades -->
+	</session-factory>
+</hibernate-configuration>

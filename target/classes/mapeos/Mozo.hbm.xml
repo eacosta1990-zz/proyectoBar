@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Mozo" table="mozo">
+		<id column="idMozo" name="idMozo">
+			<generator class="identity" />
+		</id>
+		<property column="fechaIngreso" name="fechaIngreso" type="calendar" />
+		<property column="turno" name="turno" type="string" />
+		
+		<set name="pedidos" table="pedido" order-by="idPedido asc"
+			inverse="true" lazy="true" fetch="select">
+			<key column="idMozo" not-null="true" />
+			<one-to-many class="datos.Pedido" />
+		</set>
+	</class>
+</hibernate-mapping>
